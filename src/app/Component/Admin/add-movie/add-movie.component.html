@@ -1,0 +1,124 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-6">
+            <h3 class="text-center">Movie Form</h3>
+            <form [formGroup]="movieForm" (ngSubmit)="submitMovieForm(movieForm)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" formControlName="name" class="form-control">
+                    <div *ngIf="movieForm.get('name').touched && movieForm.get('name').invalid"
+                        class="alert alert-danger">
+                        <small>Name is required of length in b/w 5-15 charecters</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea type="text" formControlName="description" class="form-control"></textarea>
+                    <div *ngIf="movieForm.get('description').touched && movieForm.get('description').invalid"
+                        class="alert alert-danger">
+                        <small>description is required of min length 15 charecters</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="imageLink">Image Link</label>
+                    <input type="text" formControlName="imageLink" class="form-control"><span><p>Ex:</p>assets\images\fidha.jpg</span>
+                    <div *ngIf="movieForm.get('imageLink').touched && movieForm.get('imageLink').invalid"
+                        class="alert alert-danger">
+                        <small>Please give proper image link</small>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="releaseDate">Release Date</label>
+                    <input type="date" class="form-control" [min]="todayDate|date:'dd-MM-yyyy'"
+                        formControlName="releaseDate">
+                    <!--<span>{{todayDate|date:'dd-MM-yyyy'}}</span>-->
+                    <div *ngIf="movieForm.get('releaseDate').touched && movieForm.get('releaseDate').invalid"
+                        class="alert alert-danger">
+                        <small>please provide release date></small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="duration">Duration(in Minutes)</label>
+                    <input type="number" class="form-control" min="60" max="180" formControlName="duration"> 
+     
+                                  <!--<span>{{todayDate|date:'dd-MM-yyyy'}}</span>-->
+                    <div *ngIf="movieForm.get('duration').touched && movieForm.get('duration').invalid"
+                        class="alert alert-danger">
+                        <small>please provide Duration of the movie</small>
+                    </div>
+                </div>
+
+                <!--
+                <div class="form-group">
+                    <label for="movieLanguages">language</label>
+                    <select class="form-select" multiple formControlName="movieLanguages">                       
+                        <option *ngFor="let lang of languages " value="{{lang.id}}">{{lang.name}}</option>
+                    </select>
+                    <div *ngIf="movieForm.get('movieLanguages').touched && movieForm.get('movieLanguages').invalid"
+                        class="alert alert-danger">
+                        <p *ngIf="movieForm.get('movieLanguages').errors['required']">language is required</p>
+                        <small>Plz provide proper language</small>
+                    </div>
+                </div>
+               -->
+                <div class="form-group">
+                    <label for="hero">Hero</label>
+                    <input type="hero" class="form-control" formControlName="hero">
+                    <div *ngIf="movieForm.get('hero').touched && movieForm.get('hero').invalid"
+                        class="alert alert-danger">
+                        <p *ngIf="movieForm.get('hero').errors['required']">Hero is required</p>
+                        <small>Plz provide proper Hero</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="heroine">Heroine</label>
+                    <input type="heroine" class="form-control" formControlName="heroine">
+                    <div *ngIf="movieForm.get('heroine').touched && movieForm.get('heroine').invalid"
+                        class="alert alert-danger">
+                        <p *ngIf="movieForm.get('heroine').errors['required']">heroine is required</p>
+                        <small>Plz provide proper heroine</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="director">Director</label>
+                    <input type="director" class="form-control" formControlName="director">
+                    <div *ngIf="movieForm.get('director').touched && movieForm.get('director').invalid"
+                        class="alert alert-danger">
+                        <p *ngIf="movieForm.get('director').errors['required']">director is required</p>
+                        <small>Plz provide proper director</small>
+                    </div>
+                </div>
+                <!--
+                <div class="form-group">
+                    <label for="theatre">Theatre</label>
+                    <select class="form-control" formControlName="theatre">                        
+                        <option *ngFor="let theatre of theatreDetails" value="{{theatre.locId}}">{{theatre.id}}{{theatre.name}}</option>
+                    </select>
+                    <div *ngIf="movieForm.get('theatre').touched && movieForm.get('theatre').invalid"
+                        class="alert alert-danger">
+                        <p *ngIf="movieForm.get('theatre').errors['required']">theatre is required</p>
+                        <small>Plz provide proper theatre</small>
+                    </div>
+                </div>
+                -->
+                <br>
+                <div class="text-center">
+                    <button class="btn btn-success" type="submit" [disabled]="!movieForm.valid">add</button>
+                </div>
+                <div>
+                    <p>{{movieForm.valid}}</p>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-3">
+            <!-- <span >{{movieDetails|json}}</span>-->
+        </div>
+    </div>
+
+</div>

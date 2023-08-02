@@ -1,0 +1,19 @@
+Row Number: <input type="number" class="form-control" id="name" required 
+                   [(ngModel)]="row" name="name">
+<br/><br/>
+No of Seats: <input type="number" class="form-control" id="name" required
+                    [(ngModel)]="seats" name="name">
+<br/><br/>
+
+<button (click)="this.onSubmit()">Submit</button>
+
+
+<h3>My Theatre</h3>
+
+<div *ngFor="let theatre of theatreArr" style="display: flex">
+    <div *ngFor="let seat of theatre.seats" style="margin-left: 10px; background: lightgray; width: 30px; height: 20px; text-align:center ">
+      {{seat}}
+  </div>
+  <br />
+  <br />
+</div>

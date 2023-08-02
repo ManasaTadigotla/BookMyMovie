@@ -1,0 +1,59 @@
+
+<div class="container-fluid ">
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card w-75 h-100">
+                <table class="table">
+                    <tr>
+                        <td><strong>Theatre Name:</strong> </td>
+                        <td>{{theatre.name}}</td>             
+                    </tr>
+                    <tr>
+                        <td><strong>Location</strong></td>
+                        <td>{{theatre.location.name}}</td>                        
+                    </tr>
+                    <tr>
+                        <td><strong>Movie</strong></td>
+                        <td>{{movieName}}</td>                        
+                    </tr>
+                    <tr>
+                        <td><strong>Tickets</strong></td>
+                        <td>{{selectedSeatNumbers}}</td>                        
+                    </tr>
+                    <tr>
+                        <td><strong>Total Amount</strong></td>
+                        <td>{{totalAmount}}</td>                        
+                    </tr>
+                </table>
+                
+                
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group" *ngIf="paymentpage">
+                <div class="form-control">
+                    Mobile:<input type="number" minlength="10" maxlength="10">
+                </div>
+                
+                <div>
+                    <select class="form-select" aria-label="Default select example">           
+                        <option  *ngFor="let mode of paymentMethods" value="{{mode}}">{{mode}}</option>            
+                      </select>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn-warning" (click)="gotoConfirmation()">Pay</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        
+    </div>
+    <div class="row" *ngIf="isPaid">
+        <div class="text-success">
+            <h4><strong>Congratulations!! Tickets booked Successfully..</strong></h4>
+        </div>
+    </div>
+</div>

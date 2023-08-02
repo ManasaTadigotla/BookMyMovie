@@ -1,0 +1,14 @@
+<span class="material-icons-round" style="color: rgb(254, 0, 161); transform: rotate(312deg);">movie</span>
+             
+<span class="material-icons-two-tone" style="color: rgb(0, 0, 255);"> check_box </span>
+<span class="fa-li"><i class="fas fa-check-square"></i></span>
+
+<div>    
+    <fa-icon style="color: rgb(0, 0, 255);" [icon]="square"></fa-icon>
+    <fa-icon [icon]="['fas', 'circle']"></fa-icon>   
+</div>
+<div *ngFor="let i of count">
+    <fa-icon style="color: rgb(0, 0, 0);" [icon]="square"></fa-icon>&nbsp;&nbsp;
+    <fa-icon style="color: rgb(0, 0, 0);" [icon]="square"></fa-icon> &nbsp;&nbsp;
+    <fa-icon style="color: rgb(0, 0, 0);" [icon]="circle"></fa-icon>     
+</div>

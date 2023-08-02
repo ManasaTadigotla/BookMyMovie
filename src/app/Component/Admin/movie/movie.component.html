@@ -1,0 +1,87 @@
+<div class="container text-center">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="text-center">
+                            <b>Movie information</b>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <input type="text" [(ngModel)]="name" name="name" class="form-control"
+                        (ngModelChange)="SearchMovie()" placeholder="Serach Movie here" />
+                    <br />
+                    <table class="table table-success table-striped" *ngIf="movieInfo">
+                        <tr>
+                            <th (click)="Sorting('name')"> Name</th>
+                            <th> Description</th>
+                            <th>Language</th>
+                            <th>Theatre(s)</th>
+                            <th>Operations</th>
+                        </tr>
+
+                        <tr *ngFor="let movie of movieInfo ;index as i" class="hover-highlight">
+
+                            <td><input type="text" class="form-control" [(ngModel)]="movie.name"
+                                    [disabled]="enableEditIndex != i">
+
+                            </td>
+                            <td><input type="text" class="form-control" [(ngModel)]="movie.description"
+                                    [disabled]="enableEditIndex != i">
+
+                            </td>
+                            <td>
+                                <select class="form-control" [(ngModel)]="movie.movieLanguages" [disabled]="enableEditIndex != i">
+                                <option value="movie.movieLanguages"></option>
+                                </select>
+                            </td>
+                            <td><input type="text" class="form-control" [(ngModel)]="movie.movieLang"
+                                    [disabled]="enableEditIndex != i">
+                            </td>
+                            <td>
+                                <button *ngIf="enableEdit && enableEditIndex == i" id="saveBtn"
+                                    class="btn page-primary-action-btn" (click)="saveMovie(movie)"
+                                    type="submit">Save</button>
+                                <button *ngIf="enableEdit && enableEditIndex == i" (click)="cancelEdit()"
+                                    class="btn page-secondary-action-btn">Cancel</button>
+                                <button *ngIf="enableEdit && enableEditIndex == i" class="btn page-danger"
+                                    (click)="deleteMovie(movie.id)">delete</button>
+                                <a href="#" class="table-row-action edit-action" *ngIf="!enableEdit"
+                                    (click)="enableEditMethod($event, i,movie)">
+                                    edit
+                                </a>
+                            </td>
+                        </tr>
+                        <!--
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                        -->
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <!--
+                  <a style="align-content: end;" class="btn page-primary-action-btn" *ngIf="!isAddClicked" (click)="isAddClicked=true" >Add New</a>
+                  
+                  <div *ngIf="isAddClicked">
+                    <div class="input-group">
+                                    <input type="text" class="form-control" #mName="ngModel" minlength="3" required="true" placeholder="add movie name here"
+                                     [(ngModel)]="newMovieName" >
+                    <span class="errorInfo" *ngIf="mName.invalid">
+                      *
+                  </span>
+                </div>
+                <div class="form-control">
+                  <button class="btn page-primary-action-btn" (click)="addNewMovie()" [disabled]="mName.invalid" >add</button>
+                 </div>
+               
+                </div>
+-->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

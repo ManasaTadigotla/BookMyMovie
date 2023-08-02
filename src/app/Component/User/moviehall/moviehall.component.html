@@ -1,0 +1,223 @@
+
+<div class="container-fluid">
+  <div class="row">    
+      <div class="col-md-4"> 
+        <a class="btn btn-link"  *ngFor="let show of showTimes" (click)="showTicketDetails(show.id)">{{show.time}}</a>
+        &nbsp;&nbsp;
+       
+      </div >
+     
+      <div class="col-md-4">
+        Select no. of Tickets:<input type="text" class="input" min="1"  [(ngModel)]="noOfSeats" type="number" min="1" max="6"/>
+      </div>      
+       <div class="col-md-4"><fa-icon  class="occupied" [icon]="square">
+      
+       </fa-icon>AlreadyBooked  
+       <fa-icon  class="selected" [icon]="square">
+      
+       </fa-icon>Selected
+       <fa-icon  class="empty" [icon]="square">
+      
+       </fa-icon>Available
+     </div>
+  <div class="row">
+    <div class="col-md-3">
+<!-- <fa-icon style="color: rgb(0, 0, 0); width: 100px; height: 100px;" [icon]="square"></fa-icon> &nbsp;&nbsp;
+ <fa-icon style="color: rgb(0, 0, 0); width: 100px; height: 100px;" [icon]="square"></fa-icon> 
+-->
+    </div>
+    <div class="col-md-6" style="background-color: azure;">
+      <!-- <div *ngFor="let seat of seatsArray" style="width: 50px; height: 50px;">-->
+        
+        <!--
+       <h5 *ngFor="let seat of seatsArray" >
+        <a *ngIf="seat.booked">
+         <fa-icon  style="color: rgb(0, 0, 250); width: 100px; height: 100px;" [icon]="square"></fa-icon>&nbsp;&nbsp;
+        </a>
+      <fa-icon *ngIf="!seat.booked" style="color: rgb(0, 0, 0); width: 100px; height: 100px;" [icon]="circle"></fa-icon> &nbsp;&nbsp; 
+        
+      </h5> 
+    -->
+      <button class="btn btn-whit padding 0" *ngFor="let seat of seatsArray" (click)="onSelectedSeat(seat.booked,seat)" >
+
+        <fa-icon  class="fa-solid fa-3x"   [ngClass]="seat.booked ? 'occupied' : seat.selected==true?'selected':'empty'" [icon]="square"j>
+      
+        </fa-icon>  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+      </button>
+       
+      <div class=" col-md-6 offset-md-4 " [hidden]="selectedSeats.length<1"> <button  class="btn btn-primary" (click)="payForTheTickets()">payment</button></div>
+     
+
+    </div>
+     
+    
+    </div>
+      <div class="col-md-3">
+      
+    </div>
+  </div>
+<!--</div>-->
+<!--
+<div class="container" class="col-md-0 offset-md-1 mt-5" *ngIf="Movie && Show">
+    <div ng-init=" getCinemaHall()"></div>
+  
+    <div class="row">
+      <div class="col">
+        <div>
+          <strong style="font-size: 1.8em;"> {{Movie.title}}</strong>
+  
+        </div>
+      </div>
+      <div class="col">
+      </div>
+  
+  
+      <div class="col">
+        <strong style="font-size: 1.2em;">Movie Hall</strong>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col">
+        <div>
+          <strong class="text-muted"> {{convertMinuteToHour(Movie.duration)}}</strong>
+        </div>
+      </div>
+      <div class="col">
+        <div>
+          <strong class="text-muted">{{ Show.date |date:'EE, d MMM'}}. &nbsp; {{Show.startTime |date:'hh:mm'}} -
+            {{Show.endTime |date:'hh:mm'}} </strong>
+        </div>
+        <strong class="text-muted"> Allowed for {{Movie.censorship}}</strong>
+      </div>
+      <div class="col">
+        <div *ngIf="CinemaHall">
+          <strong class="text-muted"> {{CinemaHall.name}}</strong>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="margin-top: 4%;">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <strong style="font-size: 1.5em;">Choose Tickets</strong>
+      </div>
+      <div class="col">
+      </div>
+      <div class="col">
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <div class="col">
+            <h3>Normal ticket</h3>
+            <br>
+          </div>
+          <div class="col">
+            <div class="qty mt-0">
+              <span class="minus bg-dark" (click)="onMinus(normalTicket,'normalTicket')">-</span>
+              <span class="count" id="normalTicket">{{normalTicket}}</span>
+              <span class="plus bg-dark" (click)="onPlus(normalTicket,'normalTicket')">+</span>
+            </div>
+            <strong>100-150 kr</strong>
+          </div>
+          <div class="col">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <strong style="font-size: 17px;">Choose Snacks</strong>
+            <h1></h1>
+            <h3>Soft Drink 0.5L</h3>
+            <br>
+            <h3>Pop Corn </h3>
+            <br>
+            <h3>Snack Menu</h3>
+            <div>
+  
+            </div>
+            <div>
+            </div>
+          </div>
+  
+          <div class="col">
+            <strong style="font-size: 17px;">Quantity</strong>
+            <h1></h1>
+  
+            <div class="qty">
+              <span class="minus bg-dark" (click)="onMinus(softDrink,'softDrink')">-</span>
+              <span class="count" id="softDrink">{{softDrink}}</span>
+              <span class="plus bg-dark" (click)="onPlus(softDrink,'softDrink')">+</span>
+            </div>
+            <strong>25 Kr</strong>
+  
+            <div class="qty mt-3">
+              <span class="minus bg-dark" (click)="onMinus(popCorn,'popCorn')">-</span>
+              <span class="count" id="popCorn">{{popCorn}}</span>
+              <span class="plus bg-dark" (click)="onPlus(popCorn,'popCorn')">+</span>
+            </div>
+            <strong>45 Kr</strong>
+  
+            <div class="qty mt-3">
+              <span class="minus bg-dark" (click)="onMinus(snackMenu,'snackMenu')">-</span>
+              <span class="count" id="snackMenu">{{snackMenu}}</span>
+              <span class="plus bg-dark" (click)="onPlus(snackMenu,'snackMenu')">+</span>
+            </div>
+            <strong>99 Kr</strong>
+  
+          </div>
+          <div class="col">
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <strong style="font-size: 1.5em;">Choose Hall Seats</strong>
+        <div class="moviehall">
+          <ul class="showcase">
+            <li>
+              <div class="seat"></div>
+              <small>N/A</small>
+            </li>
+  
+            <li>
+              <div class="seat selected"></div>
+              <small>Selected</small>
+            </li>
+  
+            <li>
+              <div class="seat occupied"></div>
+              <small>Occupied</small>
+            </li>
+            <li>
+              <div class="seat vip"></div>
+              <small>VIP</small>
+            </li>
+          </ul>
+<div class="container" *ngIf="ShowSeats">
+    <div class="screen" style="display:inline-flex;"></div>
+    <div class="moviehall">
+      <div >
+      <div class="row">
+        <div class="col-md-2 offset-md-0 mt-1" *ngFor="let showseat of ShowSeats; let i = index">
+        <div  [ngClass]="{'selected': showseat.active,'vip':showseat.status ==2 && !showseat.active,'':!showseat.active,'occupied':showseat.bookingID}"
+          class="seat" (click)="onSelected(showseat)" style="color: white;">
+          <h3>{{showseat.cinemaSeatID}}</h3>
+
+        </div>
+      </div>
+
+        
+      </div>
+    </div>
+
+  </div>
+
+
+
+</div>
+
+-->

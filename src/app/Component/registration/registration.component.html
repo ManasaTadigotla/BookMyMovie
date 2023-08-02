@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <div class="row mt-5" > 
+        <div class="col-md-4">
+            
+        </div> 
+        <div class="col-md-4">
+            <h3 class="text-center">Registration Form</h3>
+          <form [formGroup] = "NewUser" (ngSubmit)="createUser(NewUser)">
+            
+            <label>First Name</label>
+            <input type="text" formControlName="firstName" class="form-control">
+           <span class="errorinfo" *ngIf="NewUser.controls['firstName'].touched && NewUser.controls['firstName'].invalid">
+            Please provide firstName having minimun 5 charecters
+           </span>
+            <br>            
+            <label>Last Name</label>
+            <input type="text" formControlName="lastName" class="form-control">
+           <span class="errorinfo" *ngIf="NewUser.controls['lastName'].touched && NewUser.controls['lastName'].invalid">
+            Please provide lastName having minimun 5 charecters
+           </span>
+            <br>
+            <label>phone</label>
+            <input type="number" required  formControlName="phone" class="form-control">
+            <span class="errorinfo" *ngIf="NewUser.controls['phone'].touched && NewUser.controls['phone'].invalid">
+                Phone number must have 10 digits
+               </span>
+               <br>
+            <label>Password</label>
+            <input type="text" formControlName="password" class="form-control">
+           <span class="errorinfo" *ngIf="NewUser.controls['password'].touched && NewUser.controls['password'].invalid">
+            Password must have minimun 5 charecters
+           </span>
+            <br>
+            <label>email</label>
+            <input type="email" formControlName="email" class="form-control">            
+            <span class="errorinfo" *ngIf="NewUser.controls['email'].touched && NewUser.controls['email'].invalid">
+                Please enter valid email
+               </span>
+               <br>
+            <label>Location</label>
+            <select formControlName="location" class="form-control ">                
+                <option *ngFor="let loc of locations" value="{{loc}}">{{loc}}</option>
+            </select>
+            <span class="errorinfo" *ngIf="NewUser.controls['location'].touched && NewUser.controls['location'].invalid">
+                Please select location
+               </span>
+           <br>
+            <label>User Type</label>
+            <select formControlName="userType" class="form-control ">                
+                <option *ngFor="let type of userType" value="{{type}}">{{type}}</option>
+            </select>
+            <span class="errorinfo" *ngIf="NewUser.controls['userType'].touched && NewUser.controls['userType'].invalid">
+                Please select user type
+               </span>
+           <br>
+           
+            <div class="form-control">
+                <input type="submit" class="btn btn-success" value="Register" [disabled]="NewUser.invalid" >
+            </div>
+          </form>
+        </div>
+        </div>
+</div>

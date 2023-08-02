@@ -1,0 +1,35 @@
+<div class="container-fluid -sm">
+    <div class="">
+        <div class="card">
+            <div class="card-header">
+              
+            </div>
+            <div class="card-body" >
+                <img class="rounded float-start" style="width:50%;height: 300px ;"
+                src="{{movie.imageLink}}" >
+                <div class="form-control">
+                    <h4 style="color: blue;"><strong>{{movie.name}}</strong></h4>
+                </div>
+                
+                <div ><h4><strong>About</strong><br>{{movie.description}}   </h4>         </div>
+                <br>
+                <div class="form-control">
+                    <strong>Hero:</strong>{{movie.heroine}}
+                </div>
+                <div class="form-control primary">
+                    <strong>Heroine:</strong>&nbsp;{{movie.heroine}}
+                </div>
+                <div class="form-control">
+                    <strong>Director:</strong>{{movie.director}}
+                </div>
+                <!--
+                <div class="form-control">
+                    <strong>Language:</strong>{{movie.languages}}
+                </div>
+                -->
+                <div class="form-control">
+                    <strong>Duration:</strong>{{movie.duration}} Min
+                </div>
+        </div>
+    </div>
+</div>

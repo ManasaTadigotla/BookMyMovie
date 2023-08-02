@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <b>Login Here</b>
+                </div>
+                <div class="card-body">
+                    <form #logForm="ngForm">
+                    <label>phone</label>
+                    <input type="number" minlength="10" maxlength="10" name="phone" [(ngModel)]="phone" class="form-control" />
+                    <label>Password</label>
+                    <input type="password" [(ngModel)]="pswd"  name="pswd" class="form-control" />
+                    <br />
+                    <input type="submit"  value="Login"  class="btn btn-primary" (click)="CheckUserDetails()" />
+
+                    &nbsp;&nbsp;&nbsp;
+                    <a routerLink="/register">Register Here</a>
+
+                </form>
+                    <div [innerHTML]="msg"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+            <div class="form-control ">
+                <h2><strong style="color: blueviolet;">{{movieName}}</strong></h2>
+            </div>
+            <div class="card" *ngFor="let theatre of theatres">
+                <div class="card-header" style="background-color: cadetblue;"><p >{{theatre.name}}</p></div>
+                <div class="card-body">
+                    <div *ngIf="false">
+                        No of seats:
+                        <input [(ngModel)]="noOfTickets" type="number" min="1" max="10">
+                    </div>                  
+                   
+                    <div class="form-control"><button class="btn btn-link" *ngFor="let showTime of showTimes" (click)="GoToMovieHall(theatre.id,showTime.id)" >
+                        {{showTime.time}}
+                    </button>
+                    &nbsp;&nbsp;&nbsp;
+                    </div>
+                
+                    <label><i class="bi bi-ticket"></i></label>
+                    <div>
+                        <div>
+                           
+                        </div> 
+                        <div>
+                            <a class="btn btn-link" [routerLink]="['/moviehall',theatre.id,'tickets',noOfTickets]" >Book Tickets</a>
+                        </div>                       
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1">
+           
+        </div>
+    </div>
+</div>

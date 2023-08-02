@@ -1,0 +1,83 @@
+<div *ngIf="isNavbarVisiableUser">
+  <nav class="navbar navbar-expand-lg text-bg-success p-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="assets\\images\\movie.jpg" alt="MovieShows" width="30" height="24">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#">Contact</a>
+          </li>          
+          <li class="nav-item" *ngIf="isNotLoggedIn" >
+          <a class="nav-link" routerLink="/login" >Login</a>
+          <!--*ngIf="isNotLoggedIn" routerLink="/login"
+          *ngIf="isLoggedIn" routerLink="/login"
+          -->
+         </li>
+          <li class="nav-item" *ngIf="!isNotLoggedIn">
+            <a class="nav-link" routerLink="/login" >Log Out</a>
+          </li>   
+          <li>
+            <!--
+            <div>
+              Location:
+              <select name="location" [(ngModel)]="locationSelected" (change)="onLocationSelect(locationSelected)">
+                  <option *ngFor="let loc of locations" value="{{loc.locId}}" >{{loc.name}}</option>
+              </select>
+                 
+              
+          </div>
+        -->
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+<!--Admin-->
+
+<div *ngIf="isNavbarVisiableAdmin">
+  <nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+      aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/viewallmovies">Admin Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/genre">Genre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="theatre">Theatre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#">Change Password</a>
+          </li>   
+         <li class="nav-item">
+            <a class="nav-link" *ngIf="!isNotLoggedIn" routerLink="/login">Logout</a>
+          </li>        
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="row">
+  <div class="col-md-12">    
+    <router-outlet></router-outlet>
+  </div>
+</div>

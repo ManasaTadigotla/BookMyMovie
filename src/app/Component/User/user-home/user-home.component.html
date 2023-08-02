@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10 offset-md-10">
+            Location:
+            <select name="location" [(ngModel)]="locationSelected" (change)="onLocationSelect(locationSelected)" >
+                
+                <option *ngFor="let loc of locations" [value]="loc.locId" (onChange)="onLocationSelect(loc.locId)">{{loc.name}}</option>
+            </select>
+            <!--
+                <a class="btn btn-link" (click)="onLocationSelect(loc.locId)" *ngFor="let loc of locations">{{loc.name}}</a>
+            -->
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+            
+        </div>
+        <div class="col-md-10">
+&nbsp;&nbsp;
+            <div class="col-md-10 offset-md-0">
+                
+                <input type="text" [(ngModel)]="name" name="name" class="form-control"
+                (ngModelChange)="SearchMovie()" placeholder="Serach Movie here" />
+            <br />
+   
+            </div>
+                    
+            <div class="movie-card" *ngFor="let movie of MoviesDisplay">
+                <a [routerLink]="['/movieinfo',movie.id]">
+                    <img class="rounded float-start" style="width:250px;height: 300px ;"
+                        src="{{movie.imageLink}}" >
+                    <!--                          
+                                          <div class="movie-header" style="background: url({{movie.imgLink}}); background-size:cover; background-position: center; background-repeat: no-repeat; ">
+                               <p>{{movie.imgLink}}</p>
+                                </div>
+                            -->
+                </a>
+                <div class="movie-content">
+                    <div class="movie-content-header">
+                        <a [routerLink]="['/movie',movie.id]">
+                            <h5 class="movie-title">{{movie.name}}</h5>
+                            <p>{{movie.imgLink}}</p>
+                        </a>
+                        <div class="imax-logo"></div>
+                    </div>
+                    <div class="movie-info">
+                        <div class="info-section">
+                            <h5>Duration</h5>
+                            <h5>{{convertMinuteToHour(movie.duration)}}</h5>
+                        </div><!--date,time-->
+                        <div class="info-section">
+                            <h5>Release Date</h5>
+                            <h5>{{ movie.releaseDate | date:'yyyy-MM-dd'}} </h5>
+                        </div><!--screen-->
+                    </div>
+                    <div >
+                        <a class="btn btn-link primary" [routerLink]="['/movie',movie.id,'location',locationSelected]">
+                            <h5 class="btn btn-primary"><strong>Show Details</strong></h5>
+                        </a>
+                    </div>
+                </div><!--movie-content-->
+            </div><!--movie-card-->
+        </div>
+        <div class="col-md-1">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="background-color: gray;">
+            <h5>All rights are reserved by @bookmymovie</h5>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<form >  
+    <input type="number" id="screenNumbar" name="screenNumbar"  placeholder="enter screen number"  [(ngModel)]="screenNumbar" >
+
+    <input class="form-control"type="text" id="seatType" name="seatType"  placeholder="enter type of seats"  [(ngModel)]="seatType" >
+  <input class="form-control" type="text" id="rowName" name="rowName"   placeholder="enter rows name" [(ngModel)]="rowName">
+  <br>
+  <input class="form-control" type="number" id="noofRows" name="noofseats"  placeholder="enter number of seats"  [(ngModel)]="noOfSeats" >
+
+  <input class="form-control" type="number" id="noofseats" name="noofseats"  placeholder="enter number of seats"  [(ngModel)]="noOfSeats" >
+
+  <button (click)="onClickMe()">Submit!</button>
+
+  <button (click)="clearArray()">ClearArray!</button>
+<br>
+<br>
+  <div   *ngFor="let seat of seatsArray;let i =index" [ngClass]="{
+    'item1':seat.noOfSeatsperRow==i
+  }"   >
+
+      <div class="seatI row"
+      id="'{{seat.divId}}{{i+1}}'"  [ngClass]="{
+        'row':seat.noOfSeatsperRow==i
+      }"  >
+      
+          {{seat.seatNumber}}{{isequaltocolumns}}
+      </div>
+  </div>
+
+
+</form>
